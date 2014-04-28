@@ -2,15 +2,13 @@ package com.example.cs454ex6;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-
-public class MainActivity extends Activity implements GestureDetector.OnGestureListener{
-	private static final int SWIPE_MIN_DISTANCE = 120;
-    private static final int SWIPE_MAX_OFF_PATH = 250;
+public class InformationActivity extends Activity implements GestureDetector.OnGestureListener{
+	private static final int SWIPE_MIN_DISTANCE = 50;
+    private static final int SWIPE_MAX_OFF_PATH = 50;
     private static final int SWIPE_THRESHOLD_VELOCITY = 200;
 	private static final String DEBUG_TAG = "Gestures";
 	private GestureDetectorCompat mDetector;
@@ -42,14 +40,12 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
             // right to left swipe
             if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
             	Log.i(DEBUG_TAG, "rightToLeft");
-            	Intent i2 = new Intent(this, InformationActivity.class);
-            	startActivity(i2);
-            	overridePendingTransition( R.anim.right_to_left, R.anim.left_to_right);
-            	Log.i(DEBUG_TAG, "leftToRight");
+            	finish();
+            	overridePendingTransition( R.anim.right_to_left, R.anim.left_to_right );
             }  else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-            	Intent i2 = new Intent(this, InformationActivity.class);
-            	startActivity(i2);
-            	overridePendingTransition( R.anim.left_to_right ,R.anim.right_to_left ); 	
+            	Log.i(DEBUG_TAG, "leftToRight");
+            	finish();
+            	overridePendingTransition( R.anim.left_to_right, R.anim.right_to_left );
             }
         } catch (Exception e) {
             // nothing
