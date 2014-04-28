@@ -17,7 +17,7 @@ public class InformationActivity extends Activity implements GestureDetector.OnG
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.information);
 		
 		mDetector = new GestureDetectorCompat(this, this);
 	}
@@ -41,11 +41,11 @@ public class InformationActivity extends Activity implements GestureDetector.OnG
             if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
             	Log.i(DEBUG_TAG, "rightToLeft");
             	finish();
-            	overridePendingTransition( R.anim.right_to_left, R.anim.left_to_right );
+            	overridePendingTransition( R.anim.anim_slide_in_left, R.anim.anim_slide_out_left );
             }  else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
             	Log.i(DEBUG_TAG, "leftToRight");
             	finish();
-            	overridePendingTransition( R.anim.left_to_right, R.anim.right_to_left );
+            	overridePendingTransition( R.anim.anim_slide_in_right, R.anim.anim_slide_out_right );
             }
         } catch (Exception e) {
             // nothing

@@ -42,14 +42,17 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
             // right to left swipe
             if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
             	Log.i(DEBUG_TAG, "rightToLeft");
-            	Intent i2 = new Intent(this, InformationActivity.class);
-            	startActivity(i2);
-            	overridePendingTransition( R.anim.right_to_left, R.anim.left_to_right);
-            	Log.i(DEBUG_TAG, "leftToRight");
+            	Intent infoleft = new Intent(this, InformationActivity.class);
+            	startActivity(infoleft);
+            	overridePendingTransition( R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
             }  else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-            	Intent i2 = new Intent(this, InformationActivity.class);
-            	startActivity(i2);
-            	overridePendingTransition( R.anim.left_to_right ,R.anim.right_to_left ); 	
+            	Log.i(DEBUG_TAG, "leftToRight");
+            	Intent inforight = new Intent(this, InformationActivity.class);
+            	startActivity(inforight);
+            	overridePendingTransition( R.anim.anim_slide_in_right ,R.anim.anim_slide_out_right ); 	
+            }
+            else{
+            	
             }
         } catch (Exception e) {
             // nothing
